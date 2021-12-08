@@ -46,8 +46,8 @@ debug: all
 all: $(APPNAME) bash_color_test $(APPNAME)_test
 
 # link
-$(APPNAME): $(APPNAME).o main.o @@CLASS_NAME@@ #END
-	 $(CXX) $(CXXFLAGS) $(BUILDDIR)/$(APPNAME).o $(BUILDDIR)/main.o @@CLASS_NAME@@ -o $(BUILDDIR)/$(APPNAME)
+$(APPNAME): $(APPNAME).o main.o sega.o  segment.o  segment_array.o  @@CLASS_NAME@@ #END
+	 $(CXX) $(CXXFLAGS) $(BUILDDIR)/$(APPNAME).o $(BUILDDIR)/main.o sega.o  segment.o  segment_array.o  @@CLASS_NAME@@ -o $(BUILDDIR)/$(APPNAME)
 
 # compile only
 $(APPNAME).o:
@@ -57,6 +57,12 @@ main.o:
 	$(CXX) $(CXXFLAGS) -c $(SRCDIR)/main.$(EXT) -o $(BUILDDIR)/main.o
 	# $(CXX) $(CXXFLAGS) $(INCLUDES) $(BUILDDIR)/$(APPNAME).o $(LDFLAGS) -o $(BUILDDIR)/$(APPNAME)_test
 
+sega.o: 
+	 $(CXX) $(CXXFLAGS) -c $(SRCDIR)/sega.$(EXT) -o $(BUILDDIR)/sega.o
+segment.o: 
+	 $(CXX) $(CXXFLAGS) -c $(SRCDIR)/segment.$(EXT) -o $(BUILDDIR)/segment.o
+segment_array.o: 
+	 $(CXX) $(CXXFLAGS) -c $(SRCDIR)/segment_array.$(EXT) -o $(BUILDDIR)/segment_array.o
 ## auto gernerated here ##
 
 # link
